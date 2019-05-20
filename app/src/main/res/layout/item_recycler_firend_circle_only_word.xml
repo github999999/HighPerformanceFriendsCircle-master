@@ -29,12 +29,16 @@
 
         <include layout="@layout/include_item_recycler_content"/>
 
+        <!--翻译-->
         <include layout="@layout/view_translation_layout"/>
 
+        <!--定位的地址-->
         <include layout="@layout/include_item_recycler_location"/>
 
+        <!--几天前 、来源及评论点赞图标-->
         <include layout="@layout/include_item_recycler_time"/>
 
+        <!--评论列表-->
         <include layout="@layout/include_item_recycler_praise_and_comment"/>
 
     </LinearLayout>

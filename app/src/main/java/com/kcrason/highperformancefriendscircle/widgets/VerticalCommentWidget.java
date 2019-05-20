@@ -23,7 +23,7 @@ import com.kcrason.highperformancefriendscircle.span.TextMovementMethod;
 import java.util.List;
 
 /**
- * @author KCrason
+ * 垂直评论布局
  * @date 2018/4/27
  */
 public class VerticalCommentWidget extends LinearLayout implements ViewGroup.OnHierarchyChangeListener, OnItemClickPopupMenuListener {

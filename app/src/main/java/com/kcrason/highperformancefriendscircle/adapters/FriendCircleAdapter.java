@@ -346,12 +346,12 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         public View viewLine;
         public TextView txtPraiseContent;
         public ImageView imgAvatar;  // 头像
-        public TextView txtSource;
-        public TextView txtPublishTime;
+        public TextView txtSource;    // 来源 QQ 、QQ空间等等
+        public TextView txtPublishTime;  // 几天前
         public ImageView imgPraiseOrComment;
-        public TextView txtLocation;
+        public TextView txtLocation;  // 定位的地址
         public TextView txtContent;  // 发布在朋友圈的内容
-        public TextView txtState;
+        public TextView txtState;    // 全文 点击展开
         public LinearLayout layoutTranslation;
         public TextView txtTranslationContent;
         public View divideLine;
