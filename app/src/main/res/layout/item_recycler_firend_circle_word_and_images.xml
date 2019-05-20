@@ -5,6 +5,7 @@
     android:background="@color/base_FFFFFF"
     android:padding="10dp">
 
+    <!--头像-->
     <ImageView
         android:id="@+id/img_avatar"
         android:layout_width="44dp"
@@ -31,6 +32,8 @@
         <include layout="@layout/include_item_recycler_content"/>
 
         <include layout="@layout/view_translation_layout"/>
+
+        <!--图片显示的9宫格-->
         <com.kcrason.highperformancefriendscircle.widgets.NineGridView
             android:id="@+id/nine_grid_view"
             android:layout_width="match_parent"

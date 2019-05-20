@@ -47,7 +47,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
 
     private RequestOptions mRequestOptions;
 
-    private int mAvatarSize;
+    private int mAvatarSize;  // 头像显示的尺寸
 
     private DrawableTransitionOptions mDrawableTransitionOptions;
 
@@ -59,7 +59,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
 
     private RecyclerView mRecyclerView;
 
-    private ImageWatcher mImageWatcher;
+    private ImageWatcher mImageWatcher;  // 微信朋友圈 图片显示各种骚操作的框架
 
     public FriendCircleAdapter(Context context, RecyclerView recyclerView, ImageWatcher imageWatcher) {
         this.mContext = context;
@@ -75,11 +75,13 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         }
     }
 
+    // 给适配器设置数据并更新
     public void setFriendCircleBeans(List<FriendCircleBean> friendCircleBeans) {
         this.mFriendCircleBeans = friendCircleBeans;
         notifyDataSetChanged();
     }
 
+    // 添加数据
     public void addFriendCircleBeans(List<FriendCircleBean> friendCircleBeans) {
         if (friendCircleBeans != null) {
             if (mFriendCircleBeans == null) {
@@ -341,23 +343,23 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
 
     static class BaseFriendCircleViewHolder extends RecyclerView.ViewHolder {
 
-        public VerticalCommentWidget verticalCommentWidget;
+        public VerticalCommentWidget verticalCommentWidget;  // 评论布局
         public TextView txtUserName;  // 用户昵称
-        public View viewLine;
-        public TextView txtPraiseContent;
+        public View viewLine;  // 点赞与评论之间的分割线
+        public TextView txtPraiseContent;   // 点赞的人名
         public ImageView imgAvatar;  // 头像
         public TextView txtSource;    // 来源 QQ 、QQ空间等等
         public TextView txtPublishTime;  // 几天前
-        public ImageView imgPraiseOrComment;
+        public ImageView imgPraiseOrComment;   // 点击显示 点赞和评论的 弹框
         public TextView txtLocation;  // 定位的地址
         public TextView txtContent;  // 发布在朋友圈的内容
         public TextView txtState;    // 全文 点击展开
-        public LinearLayout layoutTranslation;
-        public TextView txtTranslationContent;
-        public View divideLine;
-        public ImageView translationTag;
-        public TextView translationDesc;
-        public LinearLayout layoutPraiseAndComment;
+        public LinearLayout layoutTranslation;  // 翻译的整体布局
+        public TextView txtTranslationContent;  // 翻译后的内容控件
+        public View divideLine;   // 翻译和翻译后内容的分割线
+        public ImageView translationTag;  // 翻译时间的图片标记
+        public TextView translationDesc;  // 翻译中、已翻译的控件
+        public LinearLayout layoutPraiseAndComment;  // 点赞和评论的整体布局
 
         public BaseFriendCircleViewHolder(View itemView) {
             super(itemView);

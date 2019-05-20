@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Disposable mDisposable;
     private FriendCircleAdapter mFriendCircleAdapter;  // 列表适配器
-    private ImageWatcher mImageWatcher;
-    private EmojiPanelView mEmojiPanelView;
+    private ImageWatcher mImageWatcher;   // 微信朋友圈 图片显示各种骚操作的框架
+    private EmojiPanelView mEmojiPanelView;  // 表情控件
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
