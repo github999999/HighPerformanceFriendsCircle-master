@@ -80,6 +80,7 @@ public class Utils {
         }
     }
 
+    // 长按微信朋友圈 显示出的弹框
     public static void showPopupMenu(Context context, OnItemClickPopupMenuListener onItemClickPopupMenuListener,
                                      int position, View view, TranslationState translationState) {
         if (translationState != null) {

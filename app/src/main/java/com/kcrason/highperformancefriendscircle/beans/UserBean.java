@@ -1,11 +1,11 @@
 package com.kcrason.highperformancefriendscircle.beans;
 
 public class UserBean {
-    private String userAvatarUrl;
+    private String userAvatarUrl;  // 用户头像信息
 
-    private String userName;
+    private String userName;  // 用户昵称
 
-    private int userId;
+    private int userId;   // 用户id
 
     public String getUserAvatarUrl() {
         return userAvatarUrl;

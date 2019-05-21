@@ -144,9 +144,11 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
             return true;
         });
 
+        // 翻译布局更新
         updateTargetItemContent(position, holder, friendCircleBean.getTranslationState(),
                 friendCircleBean.getContentSpan(), false);
 
+        // 用户信息更新
         UserBean userBean = friendCircleBean.getUserBean();
         if (userBean != null) {
             holder.txtUserName.setText(userBean.getUserName());
@@ -159,25 +161,25 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         OtherInfoBean otherInfoBean = friendCircleBean.getOtherInfoBean();
 
         if (otherInfoBean != null) {
-            holder.txtSource.setText(otherInfoBean.getSource());
-            holder.txtPublishTime.setText(otherInfoBean.getTime());
+            holder.txtSource.setText(otherInfoBean.getSource());  // 信息来源
+            holder.txtPublishTime.setText(otherInfoBean.getTime());  // 发布时间
         }
 
         if (friendCircleBean.isShowPraise() || friendCircleBean.isShowComment()) {
-            holder.layoutPraiseAndComment.setVisibility(View.VISIBLE);
+            holder.layoutPraiseAndComment.setVisibility(View.VISIBLE); // 点赞和评论的整体布局
             if (friendCircleBean.isShowComment() && friendCircleBean.isShowPraise()) {
                 holder.viewLine.setVisibility(View.VISIBLE);
             } else {
                 holder.viewLine.setVisibility(View.GONE);
             }
             if (friendCircleBean.isShowPraise()) {
-                holder.txtPraiseContent.setVisibility(View.VISIBLE);
+                holder.txtPraiseContent.setVisibility(View.VISIBLE); // 点赞的人名
                 holder.txtPraiseContent.setText(friendCircleBean.getPraiseSpan());
             } else {
                 holder.txtPraiseContent.setVisibility(View.GONE);
             }
             if (friendCircleBean.isShowComment()) {
-                holder.verticalCommentWidget.setVisibility(View.VISIBLE);
+                holder.verticalCommentWidget.setVisibility(View.VISIBLE);  // 评论布局
                 holder.verticalCommentWidget.addComments(friendCircleBean.getCommentBeans(), false);
             } else {
                 holder.verticalCommentWidget.setVisibility(View.GONE);
@@ -186,6 +188,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
             holder.layoutPraiseAndComment.setVisibility(View.GONE);
         }
 
+        // 点击显示 点赞和评论的 弹框
         holder.imgPraiseOrComment.setOnClickListener(v -> {
             if (mContext instanceof Activity) {
                 if (mCommentOrPraisePopupWindow == null) {
@@ -314,12 +317,10 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         }
     }
 
-
     @Override
     public void onItemClickCollection(int position) {
         Toast.makeText(mContext, "已收藏", Toast.LENGTH_SHORT).show();
     }
-
 
     static class WordAndImagesViewHolder extends BaseFriendCircleViewHolder {
 

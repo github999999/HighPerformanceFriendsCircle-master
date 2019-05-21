@@ -19,8 +19,10 @@ public class FriendCircleBean {
 
     private List<String> imageUrls;
 
+    // 用户信息
     private UserBean userBean;
 
+    // 信息来源、发布时间
     private OtherInfoBean otherInfoBean;
 
     private boolean isShowPraise;
@@ -47,12 +49,15 @@ public class FriendCircleBean {
         isShowCheckAll = showCheckAll;
     }
 
+    // 翻译状态
     private TranslationState translationState = TranslationState.START;
 
+    // 设置翻译状态
     public void setTranslationState(TranslationState translationState) {
         this.translationState = translationState;
     }
 
+    // 获取翻译状态
     public TranslationState getTranslationState() {
         return translationState;
     }
