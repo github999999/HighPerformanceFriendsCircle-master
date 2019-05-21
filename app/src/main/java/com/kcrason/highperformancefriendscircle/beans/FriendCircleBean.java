@@ -102,7 +102,7 @@ public class FriendCircleBean {
         this.isShowCheckAll = Utils.calculateShowCheckAllText(contentSpan.toString());
     }
 
-    private SpannableStringBuilder contentSpan;
+    private SpannableStringBuilder contentSpan;  // 发布在朋友圈的文字内容
 
 
     public void setContent(String content) {

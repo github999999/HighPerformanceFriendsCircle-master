@@ -109,16 +109,20 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         if (holder != null && mFriendCircleBeans != null && position < mFriendCircleBeans.size()) {
             FriendCircleBean friendCircleBean = mFriendCircleBeans.get(position);
             makeUserBaseData(holder, friendCircleBean, position);
-            if (holder instanceof OnlyWordViewHolder) {
+            if (holder instanceof OnlyWordViewHolder) {  // 纯文字布局
                 OnlyWordViewHolder onlyWordViewHolder = (OnlyWordViewHolder) holder;
-            } else if (holder instanceof WordAndUrlViewHolder) {
+            } else if (holder instanceof WordAndUrlViewHolder) {  // 分享链接
                 WordAndUrlViewHolder wordAndUrlViewHolder = (WordAndUrlViewHolder) holder;
+                // 分享链接的点击事件
                 wordAndUrlViewHolder.layoutUrl.setOnClickListener(v -> Toast.makeText(mContext, "You Click Layout Url", Toast.LENGTH_SHORT).show());
-            } else if (holder instanceof WordAndImagesViewHolder) {
+            } else if (holder instanceof WordAndImagesViewHolder) {  // 文字和图片
                 WordAndImagesViewHolder wordAndImagesViewHolder = (WordAndImagesViewHolder) holder;
+                // 九宫格图片的点击事件
                 wordAndImagesViewHolder.nineGridView.setOnImageClickListener((position1, view) ->
                     mImageWatcher.show((ImageView) view, wordAndImagesViewHolder.nineGridView.getImageViews(),
                             friendCircleBean.getImageUrls()));
+
+                // 图片的适配器
                 wordAndImagesViewHolder.nineGridView.setAdapter(new NineImageAdapter(mContext, mRequestOptions,
                         mDrawableTransitionOptions, friendCircleBean.getImageUrls()));
             }
@@ -129,6 +133,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
     private void makeUserBaseData(BaseFriendCircleViewHolder holder, FriendCircleBean friendCircleBean, int position) {
         holder.txtContent.setText(friendCircleBean.getContentSpan());
         setContentShowState(holder, friendCircleBean);
+        // 朋友圈文字内容的长按事件
         holder.txtContent.setOnLongClickListener(v -> {
             TranslationState translationState = friendCircleBean.getTranslationState();
             if (translationState == TranslationState.END) {
@@ -200,6 +205,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         holder.txtLocation.setOnClickListener(v -> Toast.makeText(mContext, "You Click Location", Toast.LENGTH_SHORT).show());
     }
 
+    // 朋友圈发布文字现实的状态 全文还是收起
     private void setContentShowState(BaseFriendCircleViewHolder holder, FriendCircleBean friendCircleBean) {
         if (friendCircleBean.isShowCheckAll()) {
             holder.txtState.setVisibility(View.VISIBLE);
@@ -238,12 +244,13 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         return mFriendCircleBeans == null ? 0 : mFriendCircleBeans.size();
     }
 
-
+    // 复制的点击事件
     @Override
     public void onItemClickCopy(int position) {
         Toast.makeText(mContext, "已复制", Toast.LENGTH_SHORT).show();
     }
 
+    // 点击选择翻译
     @Override
     public void onItemClickTranslation(int position) {
         if (mFriendCircleBeans != null && position < mFriendCircleBeans.size()) {
@@ -258,6 +265,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         }
     }
 
+    // 点击隐藏翻译
     @Override
     public void onItemClickHideTranslation(int position) {
         if (mFriendCircleBeans != null && position < mFriendCircleBeans.size()) {
@@ -266,7 +274,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         }
     }
 
-
+    // 翻译内容
     private void updateTargetItemContent(int position, BaseFriendCircleViewHolder baseFriendCircleViewHolder,
                                          TranslationState translationState, SpannableStringBuilder translationResult, boolean isStartAnimation) {
         if (translationState == TranslationState.START) {
@@ -293,7 +301,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
         }
     }
 
-
+    // 更新翻译内容
     private void notifyTargetItemView(int position, TranslationState translationState, SpannableStringBuilder translationResult) {
         View childView = mLayoutManager.findViewByPosition(position);
         if (childView != null) {
@@ -315,7 +323,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
 
     static class WordAndImagesViewHolder extends BaseFriendCircleViewHolder {
 
-        NineGridView nineGridView;
+        NineGridView nineGridView;  // 九宫图布局
 
         public WordAndImagesViewHolder(View itemView) {
             super(itemView);
@@ -326,7 +334,7 @@ public class FriendCircleAdapter extends RecyclerView.Adapter<FriendCircleAdapte
 
     static class WordAndUrlViewHolder extends BaseFriendCircleViewHolder {
 
-        LinearLayout layoutUrl;
+        LinearLayout layoutUrl;  // 分享的链接佈局
 
         public WordAndUrlViewHolder(View itemView) {
             super(itemView);
